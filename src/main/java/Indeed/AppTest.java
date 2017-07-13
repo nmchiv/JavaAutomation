@@ -7,5 +7,5 @@ package Indeed;
  * Time: 8:02 PM
  * To change this template use File | Settings | File Templates.
  */
-public class App {
+public class AppTest {
 }

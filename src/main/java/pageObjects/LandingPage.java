@@ -9,6 +9,10 @@ public class LandingPage {
     public WebDriver driver;
 
     By signin = By.id("userOptionsLabel");
+    By expectedScript = By.className("gaj_heading");
+    By navBar = By.id("p_nav");
+
+
 
     public LandingPage(WebDriver driver)
     {
@@ -18,5 +22,15 @@ public class LandingPage {
     public WebElement getLogin()
     {
         return driver.findElement(signin);
+    }
+
+    public WebElement getScript()
+    {
+        return driver.findElement(expectedScript);
+    }
+
+    public WebElement getNavBar()
+    {
+        return driver.findElement(navBar);
     }
 }
