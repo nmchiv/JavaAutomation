@@ -19,11 +19,12 @@ public class base {
     {
         Properties prop = new Properties();
 //        FileInputStream fis = new FileInputStream("C:\\Users\\nitaya\\Desktop\\Java Projects\\IndeedAutoMaven\\src\\main\\java\\Indeed\\resources\\data.properties");
-        FileInputStream fis = new FileInputStream("C:\\Users\\i57197\\Desktop\\Automation Stuff\\Java\\JavaAutomation\\src\\main\\java\\resources\\data.properties");
+        FileInputStream fis = new FileInputStream("C:\\Users\\i57197\\Desktop\\Automation Stuff\\Java\\JavaAutomation\\src\\test\\java\\resources\\data.properties");
         prop.load((fis));
 
         String browserName = prop.getProperty(("browser"));
         String userComputer = prop.getProperty("computer");
+        String goToUrl = prop.getProperty("url");
 
         if(browserName.equals("chrome"))
         {

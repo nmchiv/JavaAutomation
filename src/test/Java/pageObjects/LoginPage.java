@@ -4,9 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.Properties;
+
 public class LoginPage {
 
     public WebDriver driver;
+    public Properties prop;
 
     By email = By.id("signin_email");
     By password = By.id("signin_password");
@@ -16,6 +19,11 @@ public class LoginPage {
     public LoginPage(WebDriver driver)
     {
         this.driver = driver;
+    }
+
+    public LoginPage(Properties prop)
+    {
+        this.prop = prop;
     }
 
     public WebElement getEmail()

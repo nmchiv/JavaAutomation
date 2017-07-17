@@ -1,5 +1,7 @@
 package Indeed;
 
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import resources.base;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -10,13 +12,24 @@ import java.io.IOException;
 
 public class HomePage extends base {
 
+    @BeforeTest
+    public void initialize() throws IOException {
+        driver = initializeDriver();
+        driver.get("http://www.indeed.com");
+    }
+
+    @AfterTest
+    public void CloseTest()
+    {
+        driver.close();
+    }
+
     @Test(dataProvider = "getData")
 
     public void BasePageNavigation(String Username, String Password) throws IOException
     {
-        driver = initializeDriver();
+
         LandingPage l = new LandingPage(driver);
-        driver.get("http://www.indeed.com");
         l.getLogin().click();
         LoginPage lp = new LoginPage(driver);
         lp.getEmail().sendKeys(Username);
@@ -39,5 +52,4 @@ public class HomePage extends base {
 
         return data;
     }
-//Left off on lectunre 195
 }

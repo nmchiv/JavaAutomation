@@ -1,5 +1,6 @@
 package Indeed;
 
+import org.testng.annotations.BeforeTest;
 import resources.base;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
@@ -10,6 +11,13 @@ import java.io.IOException;
 
 public class ValidateTitle extends base {
 
+    @BeforeTest
+    public void initialize() throws IOException
+    {
+        driver = initializeDriver();
+        driver.get("http://www.indeed.com");
+    }
+
     @AfterTest
     public void CloseTest()
     {
@@ -18,9 +26,8 @@ public class ValidateTitle extends base {
 
     @Test
 
-    public void VerifyHomePage() throws IOException {
-        driver = initializeDriver();
-        driver.get("http://www.indeed.com");
+    public void VerifyHomePage() throws IOException
+    {
         LandingPage l = new LandingPage(driver);
         Assert.assertEquals(l.getScript().getText(), "Indeed helps people get jobs:");
 

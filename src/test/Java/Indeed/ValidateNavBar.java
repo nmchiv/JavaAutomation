@@ -1,5 +1,6 @@
 package Indeed;
 
+import org.testng.annotations.BeforeTest;
 import resources.base;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
@@ -10,6 +11,12 @@ import java.io.IOException;
 
 public class ValidateNavBar extends base {
 
+    @BeforeTest
+    public void initialize() throws IOException {
+        driver = initializeDriver();
+        driver.get("http://www.indeed.com");
+    }
+
     @AfterTest
     public void CloseTest()
     {
@@ -19,8 +26,7 @@ public class ValidateNavBar extends base {
     @Test
 
     public void validateNavigationBar() throws IOException {
-        driver = initializeDriver();
-        driver.get("http://www.indeed.com");
+
         LandingPage l = new LandingPage(driver);
 //        Assert True means this the value is always there.
         Assert.assertTrue(l.getNavBar().isDisplayed());
