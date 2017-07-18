@@ -12,18 +12,6 @@ import java.io.IOException;
 
 public class HomePage extends base {
 
-    @BeforeTest
-    public void initialize() throws IOException {
-        driver = initializeDriver();
-        driver.get("http://www.indeed.com");
-    }
-
-    @AfterTest
-    public void CloseTest()
-    {
-        driver.close();
-    }
-
     @Test(dataProvider = "getData")
 
     public void BasePageNavigation(String Username, String Password) throws IOException

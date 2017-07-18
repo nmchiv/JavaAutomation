@@ -11,19 +11,6 @@ import java.io.IOException;
 
 public class ValidateTitle extends base {
 
-    @BeforeTest
-    public void initialize() throws IOException
-    {
-        driver = initializeDriver();
-        driver.get("http://www.indeed.com");
-    }
-
-    @AfterTest
-    public void CloseTest()
-    {
-        driver.close();
-    }
-
     @Test
 
     public void VerifyHomePage() throws IOException

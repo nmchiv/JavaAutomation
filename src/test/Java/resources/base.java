@@ -3,6 +3,8 @@ package resources;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -58,5 +60,17 @@ public class base {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         return driver;
+    }
+
+    @BeforeSuite
+    public void Initialize() throws IOException {
+        driver = initializeDriver();
+        driver.get("http:www.indeed.com");
+    }
+
+    @AfterSuite
+    public void CloseWindows()
+    {
+        driver.close();
     }
 }
