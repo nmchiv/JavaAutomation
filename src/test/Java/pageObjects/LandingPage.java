@@ -11,6 +11,9 @@ public class LandingPage {
     By signin = By.id("userOptionsLabel");
     By expectedScript = By.className("gaj_heading");
     By navBar = By.id("p_nav");
+    By whatJob = By.id("what");
+    By whereJob = By.id("where");
+    By submitBtn = By.id("fj");
 
 
 
@@ -29,8 +32,11 @@ public class LandingPage {
         return driver.findElement(expectedScript);
     }
 
-    public WebElement getNavBar()
-    {
-        return driver.findElement(navBar);
-    }
+    public WebElement getNavBar() { return driver.findElement(navBar); }
+
+    public WebElement getWhatJob() { return driver.findElement(whatJob); }
+
+    public WebElement getWhereJob() { return driver.findElement(whereJob); }
+
+    public WebElement getSubmitBtn() { return driver.findElement(submitBtn);}
 }
