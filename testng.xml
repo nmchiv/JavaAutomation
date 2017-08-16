@@ -4,8 +4,10 @@
     <test verbose="2" preserve-order="true" name="C:/Users/i57197/Desktop/Automation Stuff/Java/JavaAutomation">
         <classes>
             <class name="Indeed.HomePage"><methods><include name="BasePageNavigation"/></methods></class>
+            <class name="Indeed.HomePage"><methods><include name="verifyCompanyReviewPage"/></methods></class>
             <class name="Indeed.ValidateNavBar"><methods><include name="validateNavigationBar"/></methods></class>
-            <class name="Indeed.ValidateTitle"><methods><include name="VerifyHomePage"/></methods></class>
+            <class name="Indeed.RunSearch"><methods><include name="SearchJobs"/></methods></class>
+
         </classes>
     </test>
 </suite>

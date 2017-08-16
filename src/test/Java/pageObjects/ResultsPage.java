@@ -9,7 +9,7 @@ public class ResultsPage extends base {
 
     public WebDriver driver;
 
-    By resultsTitle = By.cssSelector("//div[@id='refineresults']/h1/font");
+    By resultsTitle = By.xpath("//*[@id=\"tjobalertlabel\"]/b");
     By closePopover = By.id("prime-popover-close-button");
 
 

@@ -1,43 +1,106 @@
 package Indeed;
 
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.apache.bcel.generic.LAND;
+import org.junit.After;
+import org.testng.Assert;
+import org.testng.annotations.*;
+import pageObjects.*;
 import resources.base;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
-import pageObjects.LandingPage;
-import pageObjects.LoginPage;
 
 import java.io.IOException;
 
 public class HomePage extends base {
 
-    @Test(dataProvider = "getData")
+    @BeforeTest
+    public void Initialize() throws IOException {
+        driver = initializeDriver();
+        driver.get("http:www.indeed.com");
+    }
 
-    public void BasePageNavigation(String Username, String Password) throws IOException
+    @AfterMethod
+    public void afterTestMethod()
     {
+        driver.get("http:www.indeed.com");
+    }
 
+    @AfterTest
+    public void CloseWindows()
+    {
+        driver.close();
+    }
+
+    //    Test Start
+
+    @Test
+    public void VerifyLandingPage() throws IOException
+    {
         LandingPage l = new LandingPage(driver);
-        l.getLogin().click();
-        LoginPage lp = new LoginPage(driver);
-        lp.getEmail().sendKeys(Username);
-        lp.getPassword().sendKeys(Password);
-        lp.getLoginBtn().click();
+        Assert.assertEquals(l.getScript().getText(), "Indeed helps people get jobs: Over 10 million stories shared");
     }
 
-    @DataProvider
-    public Object[][] getData()
+
+    @Test
+    public void verifyCompanyReviewPageLink()
     {
-//        Row stands for how many different data types test should run (first bracket)
-//        Column stands for how many values in each test (second bracket)
-        Object[][] data = new Object[1][2];
-
-        data[0][0] = "nmchivautomation@gmail.com";
-        data [0][1] = "automation1";
-
-//        data[1][0] = "nmchivautomation+1@gmail.com";
-//        data[1][1] = "wrongpassword";
-
-        return data;
+        LandingPage l = new LandingPage(driver);
+        CompanyReviews cr = new CompanyReviews(driver);
+        l.getCompanyReviews().click();
+        Assert.assertEquals("Find great places to work", cr.getcrHeader().getText());
     }
+
+    @Test
+    public void verifyFindSalariesLink()
+    {
+        LandingPage l = new LandingPage(driver);
+        FindSalaries fs = new FindSalaries(driver);
+        l.getFindSalaries().click();
+        Assert.assertEquals("Search and compare salaries", fs.getfsHeader().getText() );
+    }
+
+    @Test
+    public void verifyFindResumesLink()
+    {
+        LandingPage l = new LandingPage(driver);
+        FindResumes fr = new FindResumes(driver);
+        l.getFindResumes().click();
+        Assert.assertEquals("Fast, simple resume search.", fr.getfrHeader().getText() );
+    }
+
+    @Test
+    public void verifyPostAResumeLink()
+    {
+        LandingPage l = new LandingPage(driver);
+        PostAJob p = new PostAJob(driver);
+        l.getPostAJob().click();
+        Assert.assertEquals("Your next hire is here.", p.getPostAJobHeader().getText());
+    }
+
+    @Test
+    public void VerifyNavUploadResumeLink()
+    {
+        LandingPage l = new LandingPage(driver);
+        IndeedResume ir = new IndeedResume(driver);
+        l.getNavResumeUpdate().click();
+        Assert.assertEquals("Create an Indeed Resume", ir.getIRHeader().getText());
+    }
+
+    @Test
+    public void VerifyUploadResumeLinkInBody()
+    {
+        LandingPage l = new LandingPage(driver);
+        IndeedResume ir = new IndeedResume(driver);
+        l.getResumeUpdate().click();
+        Assert.assertEquals("Create an Indeed Resume", ir.getIRHeader().getText());
+    }
+
+    @Test
+    public void verifySpanishLink()
+    {
+        LandingPage l = new LandingPage(driver);
+        l.getLanguageChange().click();
+        Assert.assertEquals("Indeed ayuda a la gente a encontrar empleo: Más de 1,8 millones de historias compartidas", l.getScript().getText());
+
+    }
+
+    //      Test End
 }
