@@ -38,6 +38,12 @@ public class HomePage extends base {
         Assert.assertEquals(l.getScript().getText(), "Indeed helps people get jobs: Over 10 million stories shared");
     }
 
+//    @Test
+//
+//    public void verifyFindJobsPageLink()
+//    {
+//        LandingPage l = new LandingPage(driver);
+//    }
 
     @Test
     public void verifyCompanyReviewPageLink()

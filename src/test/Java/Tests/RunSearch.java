@@ -1,15 +1,12 @@
 package Indeed;
 
-import org.openqa.selenium.By;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeTest;
-import org.testng.asserts.Assertion;
-import resources.base;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pageObjects.LandingPage;
 import pageObjects.ResultsPage;
+import resources.base;
 
 import java.io.IOException;
 
